@@ -28,6 +28,7 @@ var Blog = mongoose.model("Blog", blogSchema);
 // })
 
 // RESTful Routes 
+// 1. Index Routes
 app.get("/", function(req, res){
     res.redirect("/blogs")
 })
@@ -41,10 +42,27 @@ app.get("/blogs", function(req, res){
         }
     });
 });
+// 2. NEW ROUTE
+app.get("/new", function(req, res){
+    res.render("new");
+});
+// 3. CREATE ROUTE
+app.post("/blogs", function(req, res){
+   //create a blog
+   
+   Blog.create(req.body.blog, function(err, newBlog){
+       if(err){
+           console.render("new");
+       }else{
+           res.redirect("/blogs");
+       }
+   })
+   
+   
+});
 
-app.get("/blogs", function(req, res){
-    res.render
-})
+
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is started!");
