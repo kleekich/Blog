@@ -43,7 +43,7 @@ app.get("/blogs", function(req, res){
     });
 });
 // 2. NEW ROUTE
-app.get("/new", function(req, res){
+app.get("/blogs/new", function(req, res){
     res.render("new");
 });
 // 3. CREATE ROUTE
@@ -60,7 +60,6 @@ app.post("/blogs", function(req, res){
 });
 
 // 4. SHOW ROUTE
-
 app.get("/blogs/:id", function(req, res){
     Blog.findById(req.params.id, function(err, foundBlog){
        if(err){
@@ -70,6 +69,11 @@ app.get("/blogs/:id", function(req, res){
        }
     });
     
+})
+
+// 5. EDIT ROUTE
+app.get("/blogs/:id/edit", function(req,res){
+    res.render("edit");
 })
 
 
