@@ -93,6 +93,11 @@ app.put("/blogs/:id", function(req, res){
     })
 })
 
+// 7. DELETE ROUTE
+app.delete("/blogs/:id", function(req, res){
+    res.send("DESTROY ROUTE");
+})
+
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
